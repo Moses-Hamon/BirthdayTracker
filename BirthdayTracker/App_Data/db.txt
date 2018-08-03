@@ -1,0 +1,18 @@
+﻿CREATE TABLE birthdays (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	first TEXT NOT NULL,
+	last TEXT NOT NULL,
+	likes TEXT NOT NULL,
+	dislikes TEXT NOT NULL,
+	dob DATETIME NOT NULL
+);
+
+INSERT INTO birthdays VALUES (
+	1,	"Moses", "Hamon", "Computers", "Work", "1986-10-21"
+);
+INSERT INTO birthdays VALUES (
+	2, "Thomas", "Hamon", "Gaming", "Running", "1988-02-01"
+);
+INSERT INTO birthdays VALUES (
+	3, "Ariyah", "Hamon", "Cookies", "Playing", "2013-12-24"
+);
