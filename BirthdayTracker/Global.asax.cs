@@ -29,14 +29,19 @@ namespace BirthdayTracker
             {
                 try
                 {
+                    
                     var script = Server.MapPath("~/App_Data/db.txt"); //find script
                     var query = File.ReadAllText(script); //converts text into query
                     var connection = $"Data Source={db_path}";  //creates connection string using path dir name 
-                    var db = new SQLiteConnection(connection);
+                    var db = new SQLiteConnection(connection); //connect to database
+
+                    db.Execute(query); //Does everything for Executing Query
+
 
                 }
-                catch 
+                catch (Exception ex)
                 {
+                    File.Delete(db_path);
                     //don't have a good exception handler for this situation
                     // figure it out later
                     //but still delete db
