@@ -44,7 +44,7 @@ namespace BirthdayTracker
             var db_name = "birthdays.db";
             var db_path = Server.MapPath($"~/App_Data/{db_name}");
             var db = new SQLiteConnection($"Data Source={db_path}");
-            var record = db.QuerySingle("SELECT * FROM birthdays ORDER BY DESC LIMIT 1");
+            var record = db.QuerySingle("SELECT * FROM birthdays LIMIT 1");
 
             txtFirst.Text = record.first;
             txtLast.Text = record.last;
