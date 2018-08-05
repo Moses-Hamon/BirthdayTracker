@@ -18,9 +18,10 @@ namespace BirthdayTracker
 
         protected void btnFirst_Click(object sender, EventArgs e)
         {
-            var db_name = "birthdays.db";
-            var db_path = Server.MapPath($"~/App_Data/{db_name}");
-            var db = new SQLiteConnection($"Data Source={db_path}");
+            //var db_name = "birthdays.db";
+            //var db_path = Server.MapPath($"~/App_Data/{db_name}");
+            //var db = new SQLiteConnection($"Data Source={db_path}");
+            var db = DatabaseManager.GetConnection();
             var record = db.QuerySingle("SELECT * FROM birthdays LIMIT 1");
             lblId.Text = record.id.ToString();
             //the id property will be of type LONG
@@ -36,6 +37,20 @@ namespace BirthdayTracker
             //if you TOSTRING a DATETIME with "d"
             //it becomes the short date format of your computers region
             //for australia, this means dd/mm/yyyy
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            var db_name = "birthdays.db";
+            var db_path = Server.MapPath($"~/App_Data/{db_name}");
+            var db = new SQLiteConnection($"Data Source={db_path}");
+            var record = db.QuerySingle("SELECT * FROM birthdays ORDER BY DESC LIMIT 1");
+
+            txtFirst.Text = record.first;
+            txtLast.Text = record.last;
+            txtLikes.Text = record.likes;
+            txtDislikes.Text = record.dislikes;
+            txtDob.Text = record.dob.ToString("d");
         }
     }
 }

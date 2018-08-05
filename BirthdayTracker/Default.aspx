@@ -28,7 +28,9 @@ span {
             <span>Likes</span> <asp:TextBox ID="txtLikes" runat="server" /> <br />
             <span>Dislikes</span> <asp:TextBox ID="txtDislikes" runat="server" /> <br />
             <span>Date of Birth</span> <asp:TextBox ID="txtDob" runat="server" /> <br />
+            <!--Buttons-->
             <asp:Button ID="btnFirst" runat="server" Text="First" OnClick="btnFirst_Click" />
+            <asp:Button ID="btnNext" runat="server" Text="Last" OnClick="btnNext_Click" />
         </div>
     </form>
 </body>
