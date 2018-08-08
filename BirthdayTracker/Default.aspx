@@ -30,7 +30,8 @@ span {
             <span>Date of Birth</span> <asp:TextBox ID="txtDob" runat="server" /> <br />
             <!--Buttons-->
             <asp:Button ID="btnFirst" runat="server" Text="First" OnClick="btnFirst_Click" />
-            <asp:Button ID="btnNext" runat="server" Text="Last" OnClick="btnNext_Click" />
+            <asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" />
+            <asp:Button ID="btnLast" runat="server" Text="Last" OnClick="btnLast_Click" />
         </div>
     </form>
 </body>
