@@ -27,12 +27,14 @@ span {
             <span>Last Name:</span> <asp:TextBox ID="txtLast" runat="server" /> <br />
             <span>Likes</span> <asp:TextBox ID="txtLikes" runat="server" /> <br />
             <span>Dislikes</span> <asp:TextBox ID="txtDislikes" runat="server" /> <br />
-            <span>Date of Birth</span> <asp:TextBox ID="txtDob" runat="server" /> <br />
+            <span>Date of Birth</span> <asp:TextBox TextMode="Date" ID="txtDob" runat="server" /> <br />
             <!--Buttons-->
             <asp:Button ID="btnFirst" runat="server" Text="First" OnClick="btnFirst_Click" />
             <asp:Button ID="btnPrev"  runat="server" Text="Prev" OnClick="btnPrev_Click" />
             <asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" />
-            <asp:Button ID="btnLast" runat="server" Text="Last" OnClick="btnLast_Click" />
+            <asp:Button ID="btnLast" runat="server" Text="Last" OnClick="btnLast_Click" /> <br />
+            <asp:Button ID="btnInsert" runat="server" Text="Insert" OnClick="btnInsert_Click" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
         </div>
     </form>
 </body>
