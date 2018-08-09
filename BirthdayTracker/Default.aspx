@@ -20,7 +20,7 @@ span {
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2 class="display-4">Wonderful Birthday Tracker</h2>
+            <h2 class="display-4 bd-primary">Wonderful Birthday Tracker</h2>
 
             <span>ID:</span> <asp:Label ID="lblId" runat="server" Text="0" /> <br />
             <span>First Name:</span> <asp:TextBox ID="txtFirst" runat="server" /> <br />
@@ -30,7 +30,9 @@ span {
             <span>Date of Birth</span> <asp:TextBox ID="txtDob" runat="server" /> <br />
             <!--Buttons-->
             <asp:Button ID="btnFirst" runat="server" Text="First" OnClick="btnFirst_Click" />
-            <asp:Button ID="btnNext" runat="server" Text="Last" OnClick="btnNext_Click" />
+            <asp:Button ID="btnPrev"  runat="server" Text="Prev" OnClick="btnPrev_Click" />
+            <asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" />
+            <asp:Button ID="btnLast" runat="server" Text="Last" OnClick="btnLast_Click" />
         </div>
     </form>
 </body>

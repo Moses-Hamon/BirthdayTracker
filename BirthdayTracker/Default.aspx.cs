@@ -11,8 +11,16 @@ namespace BirthdayTracker
 {
     public partial class Default : System.Web.UI.Page
     {
+        int index;
+        int indexMax;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var db_name = "birthdays.db";
+            var db_path = Server.MapPath($"~/App_Data/{db_name}");
+            var db = new SQLiteConnection($"Data Source={db_path}");
+            var record = db.QuerySingle("SELECT * FROM birthdays ORDER BY id DESC LIMIT 1");
+            indexMax = int.Parse(record.id.ToString());
 
         }
 
@@ -41,16 +49,97 @@ namespace BirthdayTracker
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
+            index = int.Parse(lblId.Text);
+
+            try
+            {
+
+                var db_name = "birthdays.db";
+                var db_path = Server.MapPath($"~/App_Data/{db_name}");
+                var db = new SQLiteConnection($"Data Source={db_path}");
+                var record = db.QuerySingle($"SELECT * FROM birthdays WHERE id={index}+1 LIMIT 1");
+
+                if (index < indexMax)
+                {
+                    lblId.Text = record.id.ToString();
+                    txtFirst.Text = record.first;
+                    txtLast.Text = record.last;
+                    txtLikes.Text = record.likes;
+                    txtDislikes.Text = record.dislikes;
+                    txtDob.Text = record.dob.ToString("d");
+                }
+               
+
+
+            }
+            catch (Exception)
+            {
+                
+            }
+          
+        }
+
+        protected void btnLast_Click(object sender, EventArgs e)
+        {
             var db_name = "birthdays.db";
             var db_path = Server.MapPath($"~/App_Data/{db_name}");
             var db = new SQLiteConnection($"Data Source={db_path}");
-            var record = db.QuerySingle("SELECT * FROM birthdays LIMIT 1");
+            var record = db.QuerySingle("SELECT * FROM birthdays ORDER BY ID DESC LIMIT 1");
 
+            lblId.Text = record.id.ToString();
             txtFirst.Text = record.first;
             txtLast.Text = record.last;
             txtLikes.Text = record.likes;
             txtDislikes.Text = record.dislikes;
             txtDob.Text = record.dob.ToString("d");
+
+        }
+
+        protected void btnPrev_Click(object sender, EventArgs e)
+        {
+            index = int.Parse(lblId.Text);
+
+            try
+            {
+
+
+
+                if (index > 1)
+                {
+
+                    var db_name = "birthdays.db";
+                    var db_path = Server.MapPath($"~/App_Data/{db_name}");
+                    var db = new SQLiteConnection($"Data Source={db_path}");
+                    var record = db.QuerySingle($"SELECT * FROM birthdays WHERE id={index}-1 LIMIT 1");
+
+                    lblId.Text = record.id.ToString();
+                    txtFirst.Text = record.first;
+                    txtLast.Text = record.last;
+                    txtLikes.Text = record.likes;
+                    txtDislikes.Text = record.dislikes;
+                    txtDob.Text = record.dob.ToString("d");
+                }
+                if (index == 0)
+                {
+                    var db = DatabaseManager.GetConnection();
+                    var record = db.QuerySingle("SELECT * FROM birthdays LIMIT 1");
+                    lblId.Text = record.id.ToString();
+
+                    txtFirst.Text = record.first;
+                    txtLast.Text = record.last;
+                    txtLikes.Text = record.likes;
+                    txtDislikes.Text = record.dislikes;
+                    txtDob.Text = record.dob.ToString("d");
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
     }
 }
