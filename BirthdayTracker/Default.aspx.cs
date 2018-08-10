@@ -13,7 +13,6 @@ namespace BirthdayTracker
     {
         int index;
         int indexMax;
-        DateTime me;
         protected void Page_Load(object sender, EventArgs e)
         {
             var db_name = "birthdays.db";
@@ -21,8 +20,6 @@ namespace BirthdayTracker
             var db = new SQLiteConnection($"Data Source={db_path}");
             var record = db.QuerySingle("SELECT * FROM birthdays ORDER BY id DESC LIMIT 1");
             indexMax = int.Parse(record.id.ToString());
-
-          
         }
 
         protected void btnFirst_Click(object sender, EventArgs e)
@@ -146,6 +143,10 @@ namespace BirthdayTracker
             catch (Exception)
             {
               
+            }
+            finally
+            {
+                indexMax++;
             }
     
         }
