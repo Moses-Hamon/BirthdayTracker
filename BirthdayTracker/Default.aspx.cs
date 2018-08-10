@@ -140,7 +140,8 @@ namespace BirthdayTracker
                 var db = new SQLiteConnection($"Data Source={db_path}");
                 var record = db.ExecuteScalar($"INSERT INTO birthdays (first, last, likes, dislikes, dob) " +
                     $"VALUES ('{txtFirst.Text}', '{txtLast.Text}','{txtLikes.Text}','{txtDislikes.Text}','{txtDob.Text}');");
-
+                //this is a change
+            
             }
             catch (Exception)
             {
